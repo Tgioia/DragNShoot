@@ -7,10 +7,10 @@ public class StartMenu : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
+        SceneManager.LoadScene("Level01");
     }
     public void StartTutorial()
     {
-         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+         SceneManager.LoadScene("Tutorial1");
     }
 }

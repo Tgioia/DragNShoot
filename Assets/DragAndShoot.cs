@@ -48,9 +48,9 @@ public class DragAndShoot : MonoBehaviour
         }
         if (shotFired && rb.velocity.magnitude <= 0.01f)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GameManager.instance.DecreaseLives();
         }
-
+        
     }
     private bool IsGrounded()
     {
