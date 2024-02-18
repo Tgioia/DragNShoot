@@ -15,6 +15,10 @@ public class DragAndShoot : MonoBehaviour
     Vector3 startPoint;
     Vector3 endPoint;
     LineaTraiettoria tl;
+    private bool isRestarting = false;
+    private float lastTapTime = 0f;
+    public float doubleTapThreshold = 0.5f; // Time threshold for double-tap in seconds
+
 
     private void Start()
     {
@@ -34,8 +38,6 @@ public class DragAndShoot : MonoBehaviour
             currentPoint.z = 15;
             tl.RenderLine(startPoint, currentPoint);
         }
-
-
         if (Input.GetMouseButtonUp(0) && !shotFired)
         {
             endPoint= cam.ScreenToWorldPoint(Input.mousePosition);
@@ -46,9 +48,35 @@ public class DragAndShoot : MonoBehaviour
             tl.EndLine();
             shotFired= true;
         }
+        if (Input.GetMouseButtonDown(0)&&shotFired) // Change to your input method (e.g., touch)
+        {
+            if (Time.time - lastTapTime < doubleTapThreshold)
+            {
+                if (!isRestarting)
+                {
+                    if (SceneManager.GetActiveScene().name == "Tutorial1" || SceneManager.GetActiveScene().name == "Tutorial2")
+                    {
+                        GameManager.instance.RestartLevel();
+                    }
+                    else
+                    {
+                        GameManager.instance.DecreaseLives();
+                    }
+                    isRestarting= true;
+                }
+            }
+            lastTapTime = Time.time;
+        }
         if (shotFired && rb.velocity.magnitude <= 0.01f)
         {
-            GameManager.instance.DecreaseLives();
+            if (SceneManager.GetActiveScene().name == "Tutorial1" || SceneManager.GetActiveScene().name == "Tutorial2")
+            {
+                GameManager.instance.RestartLevel();
+            }
+            else
+            {
+                GameManager.instance.DecreaseLives();
+            }
         }
         
     }

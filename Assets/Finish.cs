@@ -9,7 +9,14 @@ public class finish : MonoBehaviour
     {
         if(collision.gameObject.tag== "Ball")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if (SceneManager.GetActiveScene().name == "Tutorial3" || SceneManager.GetActiveScene().name == "Level05")
+            {
+                SceneManager.LoadScene("Menu");
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
         }
     }
 }
