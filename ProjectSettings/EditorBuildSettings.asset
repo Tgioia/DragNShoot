@@ -11,25 +11,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial1.unity
     guid: 61b09b1907d50ad4d98b0075ba1745c5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutorial2.unity
     guid: 83804ee72eb63a047b5f56c51d25d91c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutorial3.unity
     guid: 24bf6b85a3959b145bbe9c1faae9476e
   - enabled: 0
     path: Assets/Scenes/Tutorial00.3.unity
     guid: 932144c33547a474980baaf39440b953
-  - enabled: 1
-    path: Assets/Scenes/Level01.unity
-    guid: d56dc5a4ebd0bd048848cc8021dbb383
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level02.unity
     guid: 04e8ef9e7b5ff52438ed1a72aa714495
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level03.unity
     guid: 9c9fe2dc77f24344aa729df2f81d8e60
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level04.unity
     guid: 2a6b7e7ea886c1a48bd2618ed1484e1f
+  - enabled: 1
+    path: Assets/Scenes/CharacterSelection.unity
+    guid: 9d50e0ca18e79474688d57052a429885
   m_configObjects: {}

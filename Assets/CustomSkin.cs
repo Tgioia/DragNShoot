@@ -12,7 +12,7 @@ public class CharacterCustomizationMenu : MonoBehaviour
     public SpriteRenderer sr;
     public List<Sprite> skins = new List<Sprite>();
     private int selectedSkin=0;
-    //public GameObject playerSkin;
+    public GameObject playerSkin;
 
     private void Start()
     {
@@ -40,6 +40,7 @@ public class CharacterCustomizationMenu : MonoBehaviour
 
     public void BackToMenu()
     {
+        GameManager.instance.setSkin(skins[selectedSkin]);
         SceneManager.LoadScene("Menu");
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class DragAndShoot : MonoBehaviour
 {
+    public SpriteRenderer sr;
     public float power = 10f;
     public Rigidbody2D rb;
     private bool shotFired = false;
@@ -22,6 +23,7 @@ public class DragAndShoot : MonoBehaviour
 
     private void Start()
     {
+        sr.sprite = GameManager.instance.getSkin();
         cam=Camera.main;
         tl = GetComponent<LineaTraiettoria>();
     }

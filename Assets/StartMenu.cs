@@ -14,4 +14,8 @@ public class StartMenu : MonoBehaviour
     {
          SceneManager.LoadScene("Tutorial1");
     }
+    public void SkinSelection()
+    {
+        SceneManager.LoadScene("CharacterSelection");
+    }
 }

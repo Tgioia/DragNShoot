@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI livesText;
     private bool isTutorialScene;
 
+    public Sprite playerSprite;
 
     private void Awake()
     {
@@ -29,7 +30,6 @@ public class GameManager : MonoBehaviour
     {
         currentLives = startingLives;
         UpdateLivesUI();
-
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -100,5 +100,13 @@ public class GameManager : MonoBehaviour
     {
         string sceneName = SceneManager.GetActiveScene().name;
         return !sceneName.Equals("Menu") && !sceneName.Equals("Tutorial1")&&!sceneName.Equals("Tutorial2"); 
+    }
+    public Sprite getSkin()
+    {
+        return playerSprite;
+    }
+    public void setSkin(Sprite skin)
+    {
+        playerSprite = skin;
     }
 }

@@ -206,8 +206,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 004d553990f94ff41bffee2aff30fea0, type: 3}
-        m_TargetAssemblyTypeName: CustomSkin, Assembly-CSharp
+      - m_Target: {fileID: 203780269}
+        m_TargetAssemblyTypeName: CharacterCustomizationMenu, Assembly-CSharp
         m_MethodName: PreviousSkin
         m_Mode: 1
         m_Arguments:
@@ -485,8 +485,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 004d553990f94ff41bffee2aff30fea0, type: 3}
-        m_TargetAssemblyTypeName: CustomSkin, Assembly-CSharp
+      - m_Target: {fileID: 203780269}
+        m_TargetAssemblyTypeName: CharacterCustomizationMenu, Assembly-CSharp
         m_MethodName: NextSkin
         m_Mode: 1
         m_Arguments:
@@ -1411,8 +1411,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 004d553990f94ff41bffee2aff30fea0, type: 3}
-        m_TargetAssemblyTypeName: CustomSkin, Assembly-CSharp
+      - m_Target: {fileID: 203780269}
+        m_TargetAssemblyTypeName: CharacterCustomizationMenu, Assembly-CSharp
         m_MethodName: BackToMenu
         m_Mode: 1
         m_Arguments:
