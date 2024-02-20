@@ -7,10 +7,6 @@ public class Pausemenu : MonoBehaviour
     public static bool gameIsPaused = false;
     public GameObject pauseMenuUI;
     public GameObject audioMenuUI;
-    void Update()
-    {
-        
-    }
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
@@ -33,6 +29,11 @@ public class Pausemenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         audioMenuUI.SetActive(false);
     }
-
-
+    public void GameOver()
+    {
+        Time.timeScale = 1f;
+        gameIsPaused =false;
+        pauseMenuUI.SetActive(false);
+        GameManager.instance.GameOver();   
+    }
 }

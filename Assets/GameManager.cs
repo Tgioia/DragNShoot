@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     public int startingLives = 3;
     private int currentLives;
     public TextMeshProUGUI livesText;
-    private bool isTutorialScene;
 
     public Sprite playerSprite;
 
@@ -25,31 +24,23 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        /*if (IsGameplayLevel())
+                {
+                    livesText.gameObject.SetActive(true);
+                    currentLives = startingLives;
+                    UpdateLivesUI();
+                }
+                else
+                {
+                    livesText.gameObject.SetActive(false); // Deactivate Lives UI in tutorial scene
+                }*/
+
     }
     private void Start()
     {
         currentLives = startingLives;
         UpdateLivesUI();
     }
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        isTutorialScene = scene.name == "Menu"|| scene.name == "Tutorial01"||scene.name == "Tutorial02";
-
-
-
-
-        if (!isTutorialScene)
-        {
-            livesText.gameObject.SetActive(true);
-            currentLives = startingLives;
-            UpdateLivesUI();
-        }
-        else
-        {
-            livesText.gameObject.SetActive(false); // Deactivate Lives UI in tutorial scene
-        }
-    }
-
 
     public void DecreaseLives()
     {
@@ -71,7 +62,7 @@ public class GameManager : MonoBehaviour
         UpdateLivesUI();
     }
 
-    private void UpdateLivesUI()
+    public void UpdateLivesUI()
     {
         if (livesText != null)
         {
@@ -80,7 +71,7 @@ public class GameManager : MonoBehaviour
     }
  
 
-    private void GameOver()
+    public void GameOver()
     {
         Debug.Log("Game Over");
         currentLives = startingLives; 
@@ -96,10 +87,10 @@ public class GameManager : MonoBehaviour
     {
          SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    private bool IsGameplayLevel()
+    public bool IsGameplayLevel()
     {
         string sceneName = SceneManager.GetActiveScene().name;
-        return !sceneName.Equals("Menu") && !sceneName.Equals("Tutorial1")&&!sceneName.Equals("Tutorial2"); 
+        return !sceneName.Equals("Menu") && !sceneName.Equals("Tutorial1")&&!sceneName.Equals("Tutorial2")&&!sceneName.Equals("CharacterSelection"); 
     }
     public Sprite getSkin()
     {

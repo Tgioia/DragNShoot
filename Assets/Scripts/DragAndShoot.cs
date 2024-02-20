@@ -26,61 +26,73 @@ public class DragAndShoot : MonoBehaviour
         sr.sprite = GameManager.instance.getSkin();
         cam=Camera.main;
         tl = GetComponent<LineaTraiettoria>();
+
+        if (GameManager.instance.IsGameplayLevel())
+                {
+                    GameManager.instance.livesText.gameObject.SetActive(true);
+                    GameManager.instance.UpdateLivesUI();
+                }
+                else
+                {
+                    GameManager.instance.livesText.gameObject.SetActive(false); // Deactivate Lives UI in tutorial scene
+                }
     }
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0)&& !shotFired)
+        if (!Pausemenu.gameIsPaused)
         {
-            startPoint = cam.ScreenToWorldPoint(Input.mousePosition);
-            startPoint.z = 15;
-            Debug.Log(startPoint);
-        }
-        if(Input.GetMouseButton(0) && !shotFired) { 
-            Vector3 currentPoint = cam.ScreenToWorldPoint(Input.mousePosition);
-            currentPoint.z = 15;
-            tl.RenderLine(startPoint, currentPoint);
-        }
-        if (Input.GetMouseButtonUp(0) && !shotFired)
-        {
-            endPoint= cam.ScreenToWorldPoint(Input.mousePosition);
-            endPoint.z = 15;
-            Debug.Log(endPoint);
-            force = new Vector2(Mathf.Clamp(startPoint.x - endPoint.x, minPower.x, maxPower.x), Mathf.Clamp(startPoint.y - endPoint.y, minPower.y, maxPower.y));
-            rb.AddForce(force * power, ForceMode2D.Impulse);
-            tl.EndLine();
-            shotFired= true;
-        }
-        if (Input.GetMouseButtonDown(0)&&shotFired) // Change to your input method (e.g., touch)
-        {
-            if (Time.time - lastTapTime < doubleTapThreshold)
+
+            if (Input.GetMouseButtonDown(0) && !shotFired)
             {
-                if (!isRestarting)
+                startPoint = cam.ScreenToWorldPoint(Input.mousePosition);
+                startPoint.z = 15;
+            }
+            if (Input.GetMouseButton(0) && !shotFired)
+            {
+                Vector3 currentPoint = cam.ScreenToWorldPoint(Input.mousePosition);
+                currentPoint.z = 15;
+                tl.RenderLine(startPoint, currentPoint);
+            }
+            if (Input.GetMouseButtonUp(0) && !shotFired)
+            {
+                endPoint = cam.ScreenToWorldPoint(Input.mousePosition);
+                endPoint.z = 15;
+                force = new Vector2(Mathf.Clamp(startPoint.x - endPoint.x, minPower.x, maxPower.x), Mathf.Clamp(startPoint.y - endPoint.y, minPower.y, maxPower.y));
+                rb.AddForce(force * power, ForceMode2D.Impulse);
+                tl.EndLine();
+                shotFired = true;
+            }
+            if (Input.GetMouseButtonDown(0) && shotFired) // Change to your input method (e.g., touch)
+            {
+                if (Time.time - lastTapTime < doubleTapThreshold)
                 {
-                    if (SceneManager.GetActiveScene().name == "Tutorial1" || SceneManager.GetActiveScene().name == "Tutorial2")
+                    if (!isRestarting)
                     {
-                        GameManager.instance.RestartLevel();
+                        if (SceneManager.GetActiveScene().name == "Tutorial1" || SceneManager.GetActiveScene().name == "Tutorial2")
+                        {
+                            GameManager.instance.RestartLevel();
+                        }
+                        else
+                        {
+                            GameManager.instance.DecreaseLives();
+                        }
+                        isRestarting = true;
                     }
-                    else
-                    {
-                        GameManager.instance.DecreaseLives();
-                    }
-                    isRestarting= true;
+                }
+                lastTapTime = Time.time;
+            }
+            if (shotFired && rb.velocity.magnitude <= 0.01f)
+            {
+                if (SceneManager.GetActiveScene().name == "Tutorial1" || SceneManager.GetActiveScene().name == "Tutorial2")
+                {
+                    GameManager.instance.RestartLevel();
+                }
+                else
+                {
+                    GameManager.instance.DecreaseLives();
                 }
             }
-            lastTapTime = Time.time;
         }
-        if (shotFired && rb.velocity.magnitude <= 0.01f)
-        {
-            if (SceneManager.GetActiveScene().name == "Tutorial1" || SceneManager.GetActiveScene().name == "Tutorial2")
-            {
-                GameManager.instance.RestartLevel();
-            }
-            else
-            {
-                GameManager.instance.DecreaseLives();
-            }
-        }
-        
     }
     private bool IsGrounded()
     {
