@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6443c467c750d4985975677d112f589b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toggle: {fileID: 3038515990880710047}
+  toggle: {fileID: 2785154713582331098, guid: 32a1b081f803741708be7a0a3af17658, type: 3}
   toggleGraphic: {fileID: 5130486331838977539}
   onSprite: {fileID: 21300000, guid: e7ff8ffb2f30c4a898a73e447e53cc36, type: 3}
   offSprite: {fileID: 21300000, guid: bc560b3b0ac724b68ad7810f7dcaad73, type: 3}

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int startingLives = 3;
     private int currentLives;
     public TextMeshProUGUI livesText;
+    public bool firstTry = true;//resettare ogni volta che cambi livello
 
     public Sprite playerSprite;
 
@@ -73,6 +74,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        instance.livesText.gameObject.SetActive(false);
         Debug.Log("Game Over");
         currentLives = startingLives; 
         UpdateLivesUI();

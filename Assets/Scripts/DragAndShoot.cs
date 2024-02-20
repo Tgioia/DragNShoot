@@ -19,7 +19,9 @@ public class DragAndShoot : MonoBehaviour
     private bool isRestarting = false;
     private float lastTapTime = 0f;
     public float doubleTapThreshold = 0.5f; // Time threshold for double-tap in seconds
-
+    [SerializeField] private AudioSource jumpSoundFX;
+    [SerializeField] private AudioSource firstShotFX;
+    [SerializeField] private AudioSource successFX;
 
     private void Start()
     {
@@ -36,6 +38,7 @@ public class DragAndShoot : MonoBehaviour
                 {
                     GameManager.instance.livesText.gameObject.SetActive(false); // Deactivate Lives UI in tutorial scene
                 }
+        GameManager.instance.firstTry = true;
     }
     private void Update()
     {
@@ -66,6 +69,7 @@ public class DragAndShoot : MonoBehaviour
             {
                 if (Time.time - lastTapTime < doubleTapThreshold)
                 {
+                    GameManager.instance.firstTry = false;
                     if (!isRestarting)
                     {
                         if (SceneManager.GetActiveScene().name == "Tutorial1" || SceneManager.GetActiveScene().name == "Tutorial2")
@@ -94,12 +98,32 @@ public class DragAndShoot : MonoBehaviour
             }
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Finish")){
+            if (GameManager.instance.firstTry)
+            {
+                firstShotFX.Play();
+            }
+            else
+            {
+                successFX.Play();
+            }
+            //suono vittoria/superamento livello in base a FirstTry
+        }else
+        {
+            jumpSoundFX.Play();
+        }
+    }
+
     private bool IsGrounded()
     {
         // Raycast downward to check if the ball is grounded
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.1f))
         {
+            GameManager.instance.firstTry = false;
             return true;
         }
         return false;

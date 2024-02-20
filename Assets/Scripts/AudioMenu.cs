@@ -5,7 +5,12 @@ using UnityEngine.Audio;
 
 public class SettingsMenu : MonoBehaviour
 {
+    private void Start()
+    {
+        SetVolume(1.0f);
+    }
     public AudioMixer audioMixer;
+    public AudioMixer SFX;
     // Start is called before the first frame update
    public void SetVolume(float volume)
     {
@@ -13,10 +18,11 @@ public class SettingsMenu : MonoBehaviour
     }
     public void Mute()
     {
-        audioMixer.SetFloat("volume", -80);
+        Debug.Log("mute");
+        SFX.SetFloat("volume", -80);
     }
-    public void Unmute(float volume)
+    public void Unmute()
     {
-        audioMixer.SetFloat("volume", volume);
+        SFX.SetFloat("volume", 0);
     }
 }
