@@ -16,22 +16,28 @@ public class finish : MonoBehaviour
             {
                 Debug.Log("Finish, first try");
                 firstShotFX.Play();
-                GameManager.instance.GainLife(3);
-                GameManager.instance.punti += 50;
+                GameManager.instance.GainLife(2);
+                GameManager.instance.punti += 500;
                 GameManager.instance.UpdatePointsUI();
             }
             else if (GameManager.instance.IsGameplayLevel())
             {
                 successFX.Play();
                 GameManager.instance.GainLife(1);
-                GameManager.instance.punti += 25;
+                GameManager.instance.punti += 250;
                 GameManager.instance.UpdatePointsUI();
             }
             Debug.Log("Win");
             GameManager.instance.firstTry = true;
-            if (SceneManager.GetActiveScene().name == "Tutorial3" || SceneManager.GetActiveScene().name == "Level05")
+            if (SceneManager.GetActiveScene().name == "Tutorial3")
             {
+                GameManager.instance.livesText.gameObject.SetActive(false);
                 SceneManager.LoadScene("Menu");
+            }
+            else if(SceneManager.GetActiveScene().name == "Level10")
+            {
+                GameManager.instance.livesText.gameObject.SetActive(false);
+                SceneManager.LoadScene("GameOverMenu");
             }
             else
             {

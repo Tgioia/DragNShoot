@@ -69,6 +69,10 @@ public class GameManager : MonoBehaviour
             pointsText.text = ""+ punti;
         }
     }
+    public int GetLives()
+    {
+        return currentLives;
+    }
  
 
     public void GameOver()
@@ -102,7 +106,7 @@ public class GameManager : MonoBehaviour
     public bool IsGameplayLevel()
     {
         string sceneName = SceneManager.GetActiveScene().name;
-        return !sceneName.Equals("Menu") && !sceneName.Equals("Tutorial1")&&!sceneName.Equals("Tutorial2")&&!sceneName.Equals("CharacterSelection")&&!sceneName.Equals("GameOverMenu"); 
+        return !sceneName.Equals("Menu") && !sceneName.Equals("Tutorial1")&&!sceneName.Equals("Tutorial2")&&!sceneName.Equals("Tutorial3")&&!sceneName.Equals("CharacterSelection")&&!sceneName.Equals("GameOverMenu"); 
     }
     public Sprite getSkin()
     {

@@ -11,7 +11,8 @@ public class GameOverMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scoreText.text = scoreText.text +  GameManager.instance.getPoints().ToString();
+        scoreText.text = scoreText.text + (GameManager.instance.getPoints() + GameManager.instance.GetLives() * 50);
+            ;
            
     }
     public void MainMenu()
@@ -19,7 +20,6 @@ public class GameOverMenu : MonoBehaviour
         GameManager.instance.SetPoints();
         //gestione punti gameover->(reset etc)
         GameManager.instance.firstTry = true;
-        
         GameManager.instance.ResetLives();
         GameManager.instance.UpdateLivesUI();
         SceneManager.LoadScene("Menu");
