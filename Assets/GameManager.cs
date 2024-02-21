@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     private int currentLives;
     public TextMeshProUGUI livesText;
     public bool firstTry = true;//resettare ogni volta che cambi livello
+    public TextMeshProUGUI pointsText;
+    public int punti;
+    [SerializeField] private AudioSource gameOverFX;
 
     public Sprite playerSprite;
 
@@ -25,22 +28,12 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        /*if (IsGameplayLevel())
-                {
-                    livesText.gameObject.SetActive(true);
-                    currentLives = startingLives;
-                    UpdateLivesUI();
-                }
-                else
-                {
-                    livesText.gameObject.SetActive(false); // Deactivate Lives UI in tutorial scene
-                }*/
-
     }
     private void Start()
     {
         currentLives = startingLives;
         UpdateLivesUI();
+        punti = 0;
     }
 
     public void DecreaseLives()
@@ -69,18 +62,35 @@ public class GameManager : MonoBehaviour
         {
             livesText.text = ""+ currentLives;
         }
+    }public void UpdatePointsUI()
+    {
+        if (pointsText != null)
+        {
+            pointsText.text = ""+ punti;
+        }
     }
  
 
     public void GameOver()
     {
-        instance.livesText.gameObject.SetActive(false);
-        Debug.Log("Game Over");
-        currentLives = startingLives; 
-        UpdateLivesUI();
-        SceneManager.LoadScene("Menu");
+        GameManager.instance.livesText.gameObject.SetActive(false);
+        gameOverFX.Play();
+        SceneManager.LoadScene("GameOverMenu");
     }
+    public void SetPoints()
+    {
+        punti = 0;
+        UpdatePointsUI();
 
+    }
+    public int getPoints()
+    {
+        return punti;
+    }
+    public void ResetLives()
+    {
+        currentLives = startingLives;
+    }
     public int GetCurrentLives()
     {
         return currentLives;
@@ -92,7 +102,7 @@ public class GameManager : MonoBehaviour
     public bool IsGameplayLevel()
     {
         string sceneName = SceneManager.GetActiveScene().name;
-        return !sceneName.Equals("Menu") && !sceneName.Equals("Tutorial1")&&!sceneName.Equals("Tutorial2")&&!sceneName.Equals("CharacterSelection"); 
+        return !sceneName.Equals("Menu") && !sceneName.Equals("Tutorial1")&&!sceneName.Equals("Tutorial2")&&!sceneName.Equals("CharacterSelection")&&!sceneName.Equals("GameOverMenu"); 
     }
     public Sprite getSkin()
     {

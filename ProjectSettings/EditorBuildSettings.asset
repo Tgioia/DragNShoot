@@ -9,12 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: f444c14ec2041974db03ada477f3488b
   - enabled: 1
-    path: Assets/Scenes/Tutorial1.unity
-    guid: 61b09b1907d50ad4d98b0075ba1745c5
-  - enabled: 1
     path: Assets/Scenes/CharacterSelection.unity
     guid: 9d50e0ca18e79474688d57052a429885
   - enabled: 1
+    path: Assets/Scenes/GameOverMenu.unity
+    guid: 60305407948a5b3459f0b68d505baeac
+  - enabled: 1
+    path: Assets/Scenes/Tutorial1.unity
+    guid: 5d350ed6c46aa1141b31cb34ec616ea4
+  - enabled: 1
+    path: Assets/Scenes/Tutorial2.unity
+    guid: 3cb36c32e8e38a9438c38ff4c0214e03
+  - enabled: 1
     path: Assets/Scenes/Level01.unity
-    guid: 81b078cc59e0e714eac3ca529ae57278
+    guid: 7cfcd9e1802de8a4189fa13081799e4c
   m_configObjects: {}

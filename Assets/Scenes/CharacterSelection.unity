@@ -289,13 +289,13 @@ MonoBehaviour:
   characterPrefab: {fileID: 1733627444}
   sr: {fileID: 1733627446}
   skins:
+  - {fileID: 21300000, guid: f1a9d2643a38fce4bbe75dcbfd3fcc41, type: 3}
   - {fileID: 21300000, guid: 6358790c0d5359f4aa893fe815c9674b, type: 3}
   - {fileID: 21300000, guid: 72f893b93fb00f54e838a672cf3b31c4, type: 3}
   - {fileID: 21300000, guid: fd37c178b9572fd419912fe62259d781, type: 3}
   - {fileID: 21300000, guid: f28188b2b945993479372211352a0ddf, type: 3}
   - {fileID: 21300000, guid: ee1eaeb658c4fa84aa838eaed4dad697, type: 3}
   - {fileID: 21300000, guid: e4aca99a2fd5f9e4cb6870ad28559191, type: 3}
-  - {fileID: 21300000, guid: f1a9d2643a38fce4bbe75dcbfd3fcc41, type: 3}
   playerSkin: {fileID: 0}
 --- !u!4 &203780270
 Transform:
@@ -1297,14 +1297,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.13536845, g: 0.14228544, b: 0.24528301, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c4ce27367278c4380a08bedcd3137ff1, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1380,7 +1380,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6358790c0d5359f4aa893fe815c9674b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f1a9d2643a38fce4bbe75dcbfd3fcc41, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1521,7 +1521,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 361685eeac9f141b09b365c40e020b2a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f2d1db67f26a74f13bb10147155953dd, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
