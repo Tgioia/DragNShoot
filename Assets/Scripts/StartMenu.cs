@@ -18,4 +18,8 @@ public class StartMenu : MonoBehaviour
     {
         SceneManager.LoadScene("CharacterSelection");
     }
+    public void Login()
+    {
+        SceneManager.LoadScene("LoginMenu");
+    }
 }

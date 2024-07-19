@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public bool firstTry = true;//resettare ogni volta che cambi livello
     public TextMeshProUGUI pointsText;
     public int punti;
+    public TextMeshProUGUI LevelName;
     [SerializeField] private AudioSource gameOverFX;
 
     public Sprite playerSprite;
@@ -101,7 +102,7 @@ public class GameManager : MonoBehaviour
     }
     public void RestartLevel()
     {
-         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public bool IsGameplayLevel()
     {
@@ -115,5 +116,9 @@ public class GameManager : MonoBehaviour
     public void setSkin(Sprite skin)
     {
         playerSprite = skin;
+    }
+    public void setLevelName()
+    {
+        this.LevelName.text = SceneManager.GetActiveScene().ToString();
     }
 }

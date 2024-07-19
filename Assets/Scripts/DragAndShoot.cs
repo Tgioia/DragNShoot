@@ -69,7 +69,7 @@ public class DragAndShoot : MonoBehaviour
                     GameManager.instance.firstTry = false;
                     if (!isRestarting)
                     {
-                        if (SceneManager.GetActiveScene().name == "Tutorial1" || SceneManager.GetActiveScene().name == "Tutorial2")
+                        if (SceneManager.GetActiveScene().name == "Tutorial1" || SceneManager.GetActiveScene().name == "Tutorial2" || SceneManager.GetActiveScene().name == "Tutorial3")
                         {
                             GameManager.instance.RestartLevel();
                         }
@@ -84,7 +84,7 @@ public class DragAndShoot : MonoBehaviour
             }
             if (shotFired && rb.velocity.magnitude <= 0.01f)
             {
-                if (SceneManager.GetActiveScene().name == "Tutorial1" || SceneManager.GetActiveScene().name == "Tutorial2")
+                if (SceneManager.GetActiveScene().name == "Tutorial1" || SceneManager.GetActiveScene().name == "Tutorial2" || SceneManager.GetActiveScene().name == "Tutorial3")
                 {
                     GameManager.instance.RestartLevel();
                 }
